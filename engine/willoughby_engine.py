@@ -1,13 +1,18 @@
-from abc import ABC
+#!/usr/bin/env python3
+# willoughby_engine.py
 
-from car import Car
+from engine.engine import AbstractEngine
 
 
-class WilloughbyEngine(Car, ABC):
-    def __init__(self, last_service_date, current_mileage, last_service_mileage):
-        super().__init__(last_service_date)
-        self.current_mileage = current_mileage
-        self.last_service_mileage = last_service_mileage
+class WilloughbyEngine(AbstractEngine):
 
-    def engine_should_be_serviced(self):
+    def __init__(self, current_mileage: int, last_service_mileage: int):
+
+        self.current_mileage: int = current_mileage
+        self.last_service_mileage: int = last_service_mileage
+
+    def set_last_service_mileage(self):
+        self.last_service_mileage = self.current_mileage
+
+    def needs_service(self) -> bool:
         return self.current_mileage - self.last_service_mileage > 60000

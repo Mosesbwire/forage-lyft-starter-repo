@@ -1,15 +1,21 @@
-from abc import ABC
+#!/usr/bin/env python3
+# sternman_engine.py
 
-from car import Car
+from engine.engine import AbstractEngine
+from datetime import datetime
 
 
-class SternmanEngine(Car, ABC):
-    def __init__(self, last_service_date, warning_light_is_on):
-        super().__init__(last_service_date)
+class SternmanEngine(AbstractEngine):
+
+    last_service_date: datetime
+    warning_light_is_on: bool
+
+    def __init__(self, last_service_date: datetime, warning_light_is_on: bool):
+        self.last_service_date = last_service_date
         self.warning_light_is_on = warning_light_is_on
 
-    def engine_should_be_serviced(self):
-        if self.warning_light_is_on:
-            return True
-        else:
-            return False
+    def set_warning_light(self):
+        self.warning_light_is_on = False
+
+    def needs_service(self) -> bool:
+        return self.warning_light_is_on
