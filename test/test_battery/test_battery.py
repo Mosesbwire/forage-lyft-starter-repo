@@ -34,7 +34,7 @@ class TestNubbin(unittest.TestCase):
 class TestSpindler(unittest.TestCase):
 
     def test_battery_should_be_serviced(self):
-        last_service = 2.5
+        last_service = 3.5
         current_date = dt.now()
         last_service_date = current_date - \
             datetime.timedelta(days=365 * last_service)
@@ -44,7 +44,7 @@ class TestSpindler(unittest.TestCase):
         self.assertTrue(battery.needs_service())
 
     def test_battery_does_not_need_service(self):
-        last_service = 1
+        last_service = 2.5
         current_date = dt.now()
         last_service_date = current_date - \
             datetime.timedelta(days=365 * last_service)
