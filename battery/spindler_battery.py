@@ -15,4 +15,4 @@ class SpindlerBattery(AbstractBattery):
     def needs_service(self) -> bool:
         time_elapsed = relativedelta(self.current_date, self.last_service_date)
 
-        return time_elapsed.years >= 2
+        return time_elapsed.years >= 3
