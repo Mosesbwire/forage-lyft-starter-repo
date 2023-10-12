@@ -6,7 +6,7 @@ from engine.engine import AbstractEngine
 
 class WilloughbyEngine(AbstractEngine):
 
-    def __init__(self, current_mileage: int, last_service_mileage: int):
+    def __init__(self, last_service_mileage: int, current_mileage: int, ):
 
         self.current_mileage: int = current_mileage
         self.last_service_mileage: int = last_service_mileage
@@ -15,4 +15,4 @@ class WilloughbyEngine(AbstractEngine):
         self.last_service_mileage = self.current_mileage
 
     def needs_service(self) -> bool:
-        return self.current_mileage - self.last_service_mileage > 60000
+        return self.current_mileage - self.last_service_mileage >= 60000
